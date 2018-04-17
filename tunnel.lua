@@ -81,10 +81,6 @@ function move( distance, direction)
 	end
 end
 
-function returnTunnel( return )
-	move( return,1)
-end
-
 function goHome()
 	move(position.y,3)
 end
@@ -115,7 +111,7 @@ while run do
 		getFuel()
 		loadFuel()
 		depositInv()
-		returnTunnel(farthest)
+		move(farthest, 1)
 	end
 	
 end
