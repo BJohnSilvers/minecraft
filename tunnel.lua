@@ -28,12 +28,12 @@ function getFuel()
 	turtle.suck()
 end
 
-function returnTunnel()
-	move(position[y],1)
+function returnTunnel( return )
+	move( return,1)
 end
 
-function goHome( return )
-	move(return,3)
+function goHome()
+	move(position.y,3)
 end
 
 function loadFuel()
