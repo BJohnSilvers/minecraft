@@ -1,17 +1,21 @@
-ffunction face( direction)
-	while not direction==mode do
+local arg = {...}
+mode = 0
+
+function face( direction)
+	while direction!=mode do
 		turtle.turnLeft()
 		mode = (mode +1) % 4
 	end
 end
 
-unction invFull()
-	turtle.select(16)
-	if(turtle.getItemCount()>0) then
-		return true
-	else
-		return false
+function invFull()
+	for i=1,16 do
+		turtle.select(i)
+		if(turtle.getItemCount()==0) then
+			return false
+		end
 	end
+	return true
 end
 
 function needFuel()
@@ -38,7 +42,7 @@ end
 function loadFuel()
 	for i=1,16 do
 		turtle.select(i)
-		while (turtle.getFuelLevel()<(turtle.getFuelLimit()-300) and turtle.refuel(0)==0 ) do
+		while (turtle.getFuelLevel()<(turtle.getFuelLimit()-300) and turtle.refuel(0)!=0 ) do
 			turtle.refuel(1)
 		end
 	end
