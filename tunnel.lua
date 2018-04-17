@@ -8,7 +8,7 @@ function invFull()
 end
 
 function needFuel()
-	if(turtle.getFuelLevel() < arg[1]*2+position[y]+16) then
+	if(turtle.getFuelLevel() < arg[1]*2+position["y"]+16) then
 		return true
 	else
 		return false
@@ -32,8 +32,8 @@ function returnTunnel()
 	move(position[y],1)
 end
 
-function goHome()
-	move(position[y],3)
+function goHome( return )
+	move(return,3)
 end
 
 function loadFuel()
@@ -63,13 +63,13 @@ function moveDig( distance, direction)
 		end
 		turtle.forward()
 		if (mode==0) then
-			position[x] = position[x]+1
+			position["x"] = position["x"]+1
 		elseif (mode==1) then
-			position[y] = position[y]+1
+			position["y"] = position["y"]+1
 		elseif (mode==2) then
-			position[x] = position[x]-1
+			position["x"] = position["x"]-1
 		elseif (mode==3) then
-			position[y] = position[y]+1
+			position["y"] = position["y"]+1
 		end
 		turtle.digDown()
 	end
@@ -80,13 +80,13 @@ function move( distance, direction)
 	for i=1,distance do
 		turtle.forward()
 		if (mode==0) then
-			position[x] = position[x]+1
+			position["x"] = position["x"]+1
 		elseif (mode==1) then
-			position[y] = position[y]+1
+			position["y"] = position["y"]+1
 		elseif (mode==2) then
-			position[x] = position[x]-1
+			position["x"] = position["x"]-1
 		elseif (mode==3) then
-			position[y] = position[y]+1
+			position["y"] = position["y"]+1
 		end
 	end
 end
@@ -102,17 +102,17 @@ loadFuel()
 run = true
 mode = 0
 
-position={ [x] = 0, [y]=0 }
+position={ ["x"] = 0, ["y"]=0 }
 while run do
 	tunnel()
 	if ( invFull() or needFuel() ) then
-		farthest = position[y]
+		farthest = position["y"]
 		goHome()
 		depositInv()
 		getFuel()
 		loadFuel()
 		depositInv()
-		returnTunnel()
+		returnTunnel(farthest)
 	end
 	
 end
