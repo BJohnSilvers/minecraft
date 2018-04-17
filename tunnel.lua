@@ -1,22 +1,3 @@
-loadFuel()
-run = true
-mode = 0
-
-position={ [x] = 0, [y]=0 }
-while run do
-	tunnel()
-	if ( invFull() or needFuel() ) then
-		farthest = position[y]
-		goHome()
-		depositInv()
-		getFuel()
-		loadFuel()
-		depositInv()
-		returnTunnel()
-	end
-	
-end
-
 function invFull()
 	turtle.select(16)
 	if(turtle.getItemCount()>0) then
@@ -116,3 +97,24 @@ function face( direction)
 		mode = (mode +1) % 4
 	end
 end
+
+loadFuel()
+run = true
+mode = 0
+
+position={ [x] = 0, [y]=0 }
+while run do
+	tunnel()
+	if ( invFull() or needFuel() ) then
+		farthest = position[y]
+		goHome()
+		depositInv()
+		getFuel()
+		loadFuel()
+		depositInv()
+		returnTunnel()
+	end
+	
+end
+
+
