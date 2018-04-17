@@ -1,4 +1,11 @@
-function invFull()
+ffunction face( direction)
+	while not direction==mode do
+		turtle.turnLeft()
+		mode = (mode +1) % 4
+	end
+end
+
+unction invFull()
 	turtle.select(16)
 	if(turtle.getItemCount()>0) then
 		return true
@@ -28,14 +35,6 @@ function getFuel()
 	turtle.suck()
 end
 
-function returnTunnel( return )
-	move( return,1)
-end
-
-function goHome()
-	move(position.y,3)
-end
-
 function loadFuel()
 	for i=1,16 do
 		turtle.select(i)
@@ -43,15 +42,6 @@ function loadFuel()
 			turtle.refuel(1)
 		end
 	end
-end
-
-function tunnel()
-	moveDig(arg[1],0)
-	moveDig(4,1)
-	moveDig(arg[1],2)
-	moveDig(4,3)
-	move(4,1)
-	moveDig(4,1)
 end
 
 function moveDig( distance, direction)
@@ -91,12 +81,23 @@ function move( distance, direction)
 	end
 end
 
-function face( direction)
-	while not direction==mode do
-		turtle.turnLeft()
-		mode = (mode +1) % 4
-	end
+function returnTunnel( return )
+	move( return,1)
 end
+
+function goHome()
+	move(position.y,3)
+end
+
+function tunnel()
+	moveDig(arg[1],0)
+	moveDig(4,1)
+	moveDig(arg[1],2)
+	moveDig(4,3)
+	move(4,1)
+	moveDig(4,1)
+end
+
 
 loadFuel()
 run = true
