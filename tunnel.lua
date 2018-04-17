@@ -102,7 +102,9 @@ loadFuel()
 run = true
 mode = 0
 
-position={ ["x"] = 0, ["y"]=0 }
+position={ }
+position.x=0
+position.y=0
 while run do
 	tunnel()
 	if ( invFull() or needFuel() ) then
